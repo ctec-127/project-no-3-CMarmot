@@ -1,4 +1,5 @@
 <?php // Filename: header.inc.php ?>
+<!-- This is the head for the html and the first two requires for config and layout -->
 <!DOCTYPE html>
 <html lang="en">
 <head>

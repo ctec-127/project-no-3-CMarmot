@@ -1,5 +1,5 @@
 <?php // Filename: display-records.php
-
+// This handles the UI for displaying the records it reqires the header, content and footer code
 $pageTitle = "Record Management";
 require 'inc/layout/header.inc.php'; 
 ?>
