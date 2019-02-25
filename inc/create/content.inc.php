@@ -87,7 +87,7 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
             unset($email);
             unset($phone);
             unset($gpa);
-            unset($financial);
+            unset($fin);
             unset($degree);
 
         }
