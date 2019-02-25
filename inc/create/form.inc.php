@@ -47,8 +47,8 @@ http://php.net/manual/en/language.operators.comparison.php#language.operators.co
     <label class="col-form-label" for="degree">Degree </label>
     <select class="form-control" name ="degree" id="degree">
         <option value="--Select--">--Select--</option>
-        <option value ="Graphic and Web Design" id="degree" >Graphics and Web Design</option>
-        <option value ="Web Design" id="degree" >Web Design</option>
+        <option value ="Graphic and Web Design">Graphics and Web Design</option>
+        <option value ="Web Design">Web Design</option>
     </select>  
    
     <br>   
