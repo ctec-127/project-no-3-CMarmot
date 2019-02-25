@@ -38,7 +38,10 @@ function display_record_table($result){
     <th><a href="?sortby=last_name">Last Name</a></th>
     <th><a href="?sortby=email">Email</a></th>
     <th><a href="?sortby=phone">Phone</a></th>
-    <th><a href="?sortby=gpa">GPA</a></th></tr></thead>';
+    <th><a href="?sortby=gpa">GPA</a></th>
+    <th><a href="?sortby=fin">Financial Aid</a></th>
+    <th><a href="?sortby=degree">Degree</a></th>
+    </tr></thead>';
     # $row will be an associative array containing one row of data at a time
     while ($row = $result->fetch_assoc()){
         # display rows and columns of data
@@ -49,8 +52,9 @@ function display_record_table($result){
         echo "<td><strong>{$row['last_name']}</strong></td>";
         echo "<td>{$row['email']}</td>";
         echo "<td>{$row['phone']}</td>";
-        // trying to add gpa
         echo "<td>{$row['gpa']}</td>";
+        echo "<td>{$row['fin']}</td>";
+        echo "<td>{$row['degree']}</td>";
         echo '</tr>';
     } // end while
     // closing table tag and div

@@ -1,4 +1,17 @@
-<?php // Filename: form.inc.php ?>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+
 <!-- This handles the display while creating a new record, it shows the contents of the field after it is entered -->
 
 <!-- Note the use of sticky fields below -->
@@ -27,31 +40,16 @@ http://php.net/manual/en/language.operators.comparison.php#language.operators.co
     <label class="col-form-label" for="gpa">GPA </label>
     <input class="form-control" type="text" id="gpa" name="gpa" value="<?php echo (isset($gpa) ? $gpa: '');?>"">
     <br>
-
-    <!-- attempting financial aid -->
-
-    <label class="col-form-label" for="fin">Financial Aid </label>
-    <div class="custom-control custom-radio">
-    <input type="radio" class="custom-control-input" id="fin" name="fin">
-    <label class="custom-control-label" for="fin" value="Yes">Yes</label>
-    </div>
-
- 
-    <div class="custom-control custom-radio">
-    <input type="radio" class="custom-control-input" id="fin" name="fin" checked>
-    <label class="custom-control-label" for="fin" value="No">No</label>
-    </div>
-
-
-    <!-- attempting degree  --> 
+    <!-- attempting degree  -->
     <label class="col-form-label" for="degree">Degree </label>
-    <select class="form-control" name ="degree" id="degree">
-        <option value="--Select--">--Select--</option>
-        <option value ="Graphic and Web Design" id="degree" >Graphics and Web Design</option>
-        <option value ="Web Design" id="degree" >Web Design</option>
-    </select>  
-   
-    <br>   
+    <select class="form-group">
+        <option value ="BA" id="degree" name="degree" value="<?php echo (isset($degree) ? $degree: '');?>""></option>
+        <option value ="BS" id="degree" name="degree" value="<?php echo (isset($degree) ? $degree: '');?>""></option>
+ 
+    </select>   
+    <br>
     <a href="display-records.php">Cancel</a>&nbsp;&nbsp;
     <button class="btn btn-primary" type="submit">Save Record</button>
 </form>
+</body>
+</html>
