@@ -9,6 +9,17 @@ $error_bucket = [];
 
 // http://php.net/manual/en/mysqli.real-escape-string.php
 
+
+        # define two variables
+        # If you want to make one of them checked by default set it's value to checked 
+        $yes = '';
+        $no = 'checked';
+        $fin = "";
+        $degre = "";
+
+
+ 
+
 if($_SERVER['REQUEST_METHOD']=="POST"){
     // First insure that all required fields are filled in
     if (empty($_POST['first'])) {
@@ -54,6 +65,11 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
         array_push($error_bucket,"<p>A financial aid choice is required.</p>");
     } else {
         #$fin = $_POST['fin'];
+        if ($_POST['fin'] == 'yes') {
+            $yes = 'checked'; # set $yes to checked
+        } elseif ($_POST['fin'] == 'no') { # did the user click on no
+            $no = 'checked'; # set $no to checked
+        }
         $fin = $db->real_escape_string($_POST['fin']);
     }
     if (empty($_POST['degree'])) {
