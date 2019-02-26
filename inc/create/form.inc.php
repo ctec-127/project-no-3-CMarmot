@@ -32,11 +32,11 @@ http://php.net/manual/en/language.operators.comparison.php#language.operators.co
 
     <label class="col-form-label" for="fin">Financial Aid </label>
     <label for="yes">
-                <input type="radio" name="fin" value="yes" id="yes" <?php echo $yes; ?>>
+                <input type="radio" name="fin" value="1" id="yes" <?php echo $yes; ?>>
                 Yes
             </label>
             <label for="no">
-                <input type="radio" name="fin" value="no" id="no" <?php echo $no; ?>>
+                <input type="radio" name="fin" value="0" id="no" <?php echo $no; ?>>
                 No
             </label>
             <br>
