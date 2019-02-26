@@ -32,14 +32,14 @@ http://php.net/manual/en/language.operators.comparison.php#language.operators.co
 
     <label class="col-form-label" for="fin">Financial Aid </label>
     <label for="yes">
-                <input type="radio" name="fin" value="1" id="yes" <?php echo $yes; ?>>
-                Yes
-            </label>
-            <label for="no">
-                <input type="radio" name="fin" value="0" id="no" <?php echo $no; ?>>
-                No
-            </label>
-            <br>
+        <input type="radio" name="fin" value="1" id="yes" <?php echo $yes; ?>>
+            Yes
+    </label>
+    <label for="no">
+        <input type="radio" name="fin" value="0" id="no" <?php echo $no; ?>>
+            No
+    </label>
+    <br>
         <!-- <div class="custom-control custom-radio">
         <label class="custom-control-label" for="yes"> 
         <input type="radio" class="custom-control-input" name="fin" value="yes" id="yes" <?php echo $yes; ?>>

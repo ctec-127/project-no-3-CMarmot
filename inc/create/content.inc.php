@@ -14,13 +14,14 @@ $error_bucket = [];
         # If you want to make one of them checked by default set it's value to checked 
         $yes = '';
         $no = 'checked';
-        $fin = "";
-        $degre = "";
+
 
 
  
 
 if($_SERVER['REQUEST_METHOD']=="POST"){
+    $yes = '';
+    $no = 'checked';
     // First insure that all required fields are filled in
     if (empty($_POST['first'])) {
         array_push($error_bucket,"<p>A first name is required.</p>");
@@ -61,14 +62,16 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
         #$phone = $_POST['gpa'];
         $gpa = $db->real_escape_string($_POST['gpa']);
     }
-    if (empty($_POST['fin'])) {
+    if (!isset($_POST['fin'])) {
         array_push($error_bucket,"<p>A financial aid choice is required.</p>");
     } else {
         #$fin = $_POST['fin'];
-        if ($_POST['fin'] == 'yes') {
+        if ($_POST['fin'] == "1") {
             $yes = 'checked'; # set $yes to checked
-        } elseif ($_POST['fin'] == 'no') { # did the user click on no
+           
+        } elseif ($_POST['fin'] == "0") { # did the user click on no
             $no = 'checked'; # set $no to checked
+            
         }
         $fin = $db->real_escape_string($_POST['fin']);
     }
