@@ -37,9 +37,9 @@ http://php.net/manual/en/language.operators.comparison.php#language.operators.co
             No
     </label>
     <br>
-        
  
-    <!-- attempting degree  --> 
+    
+    <!--  degree  --> 
     
     <label class="col-form-label" for="degree">Degree </label>
     <select class="form-control" name ="degree" id="degree">
@@ -49,6 +49,12 @@ http://php.net/manual/en/language.operators.comparison.php#language.operators.co
     </select>  
    
     <br>   
+    <label for="graduation">Graduation date:</label>
+    <br>
+    <input type="date" id="graduation" name="graduation"
+       value="2019-07-22"
+       min="2018-01-01" max="2030-12-31">
+    <br><br>
  
 
     <a href="display-records.php">Cancel</a>&nbsp;&nbsp;

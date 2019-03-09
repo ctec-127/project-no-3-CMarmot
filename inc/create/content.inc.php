@@ -66,12 +66,18 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
         #$degree = $_POST['degree'];
         $degree = $db->real_escape_string($_POST['degree']);
     }
+    if (empty($_POST['graduation'])) {
+        array_push($error_bucket,"<p>A graduation date is required.</p>");
+    } else {
+        #$degree = $_POST['degree'];
+        $graduation = $db->real_escape_string($_POST['graduation']);
+    }
 
     // If we have no errors than we can try and insert the data
     if (count($error_bucket) == 0) {
         // Time for some SQL
-        $sql = "INSERT INTO $db_table (first_name,last_name,student_id,email,phone,gpa,financial_aid,degree_program) ";
-        $sql .= "VALUES ('$first','$last',$sid,'$email','$phone','$gpa','$fin','$degree')";
+        $sql = "INSERT INTO $db_table (first_name,last_name,student_id,email,phone,gpa,financial_aid,degree_program,graduation) ";
+        $sql .= "VALUES ('$first','$last',$sid,'$email','$phone','$gpa','$fin','$degree','$graduation')";
 
         // comment in for debug of SQL
         // echo $sql;
