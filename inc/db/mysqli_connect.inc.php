@@ -1,5 +1,5 @@
 <?php // Filename: mysqli_connect.inc.php
-// This allows setting and changing the access to the db -if you have access to this code- and then connects to the db
+
 # Create a new connection to the database
 $host = 'localhost';
 $username = 'root';

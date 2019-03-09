@@ -5,7 +5,7 @@ require_once __DIR__ . "/../app/config.inc.php";
 
 $error_bucket = [];
 
- # define two variables
+  # define two variables
         # If you want to make one of them checked by default set it's value to checked 
         $yes = '';
         $no = 'checked';
@@ -14,6 +14,10 @@ $error_bucket = [];
 // http://php.net/manual/en/mysqli.real-escape-string.php
 
 if($_SERVER['REQUEST_METHOD']=="POST"){
+    // grab primary key from hidden field
+    if (!empty($_POST['id'])) {
+        $id = $_POST['id'];
+    }
     // First insure that all required fields are filled in
     if (empty($_POST['first'])) {
         array_push($error_bucket,"<p>A first name is required.</p>");
@@ -70,11 +74,7 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
     // If we have no errors than we can try and insert the data
     if (count($error_bucket) == 0) {
         // Time for some SQL
-        $sql = "INSERT INTO $db_table (first_name,last_name,student_id,email,phone,gpa,financial_aid,degree_program) ";
-        $sql .= "VALUES ('$first','$last',$sid,'$email','$phone','$gpa','$fin','$degree')";
-
-        // comment in for debug of SQL
-        // echo $sql;
+        $sql = "UPDATE $db_table SET first_name='$first', last_name='$last', student_id=$sid, email='$email',phone='$phone', gpa='$gpa',financial_aid='$fin',degree_program='$degree' WHERE id=$id";
 
         $result = $db->query($sql);
         if (!$result) {
@@ -90,10 +90,28 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
             unset($sid);
             unset($email);
             unset($phone);
+            unset($id);
+            unset($gpa);
+            unset($fin);
+            unset($degree);
         }
     } else {
         display_error_bucket($error_bucket);
+    } // end of error bucket
+} else {
+    // check for record id (primary key)
+    $id = $_GET['id'];
+    // now we need to query the database and get the data for the record
+    // note limit 1
+    $sql = "SELECT * FROM $db_table WHERE id=$id LIMIT 1";
+    // query database
+    $result = $db->query($sql);
+    // get the one row of data
+    while($row = $result->fetch_assoc()) {
+        $first = $row['first_name'];
+        $last = $row['last_name'];
+        $sid = $row['student_id'];
+        $email = $row['email'];
+        $phone = $row['phone'];
     }
 }
-
-?>

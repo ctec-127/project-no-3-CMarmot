@@ -1,5 +1,4 @@
 <?php // Filename: config.inc.php
-// This allow the following information to be filled out in one place and called or shown when needed
     
 // copyright
 $app_copyright = '&copy; 2019 - Your Name';

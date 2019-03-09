@@ -1,9 +1,7 @@
 <?php // Filename: delete-record.php
-// This runs if the user clicks the delete button in the student records
 
-
-require __DIR__ . "/inc/db/mysqli_connect.inc.php";
-require __DIR__ . "/inc/app/config.inc.php";
+require_once __DIR__ . "/inc/db/mysqli_connect.inc.php";
+require_once __DIR__ . "/inc/app/config.inc.php";
 
 // check to see if id is in the query string
 if(isset($_GET['id'])){

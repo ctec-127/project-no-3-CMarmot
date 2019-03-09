@@ -1,9 +1,6 @@
-<?php // Filename: connect.inc.php
-// This handles the sorting functionality for last names, if the filter is set (a letter is chosen) it searches the db for last names starting with that letter and then displays them, if none, it displays a message that there aren't any
-
+<?php // Filename: content.inc.php
 
 require __DIR__ . "/../db/mysqli_connect.inc.php";
-require __DIR__ . "/../functions/functions.inc.php";
 
 $orderby = 'last_name';
 $filter = '';
