@@ -31,6 +31,7 @@ http://php.net/manual/en/language.operators.comparison.php#language.operators.co
     <!-- attempting financial aid -->
 
     <label class="col-form-label" for="fin">Financial Aid </label>
+    <br>
     <label for="yes">
         <input type="radio" name="fin" value="1" id="yes" <?php echo $yes; ?>>
             Yes
@@ -59,7 +60,7 @@ http://php.net/manual/en/language.operators.comparison.php#language.operators.co
     
     <label class="col-form-label" for="degree">Degree </label>
     <select class="form-control" name ="degree" id="degree">
-        <option value="--Select--">--Select--</option>
+        <!-- <option value="--Select--">--Select--</option> -->
         <option value ="Communications">Communications</option>
         <option value ="Ceramics">Ceramics</option>
     </select>  
