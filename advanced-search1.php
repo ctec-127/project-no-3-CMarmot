@@ -18,7 +18,7 @@ $gpa = '';
 $selected = '';
 
 if (isset($_POST['gpa'])) {
-    $region = $_POST['gpa'];
+    $gpa = $_POST['gpa'];
 }
 ?>
 
