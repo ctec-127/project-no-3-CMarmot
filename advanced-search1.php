@@ -61,12 +61,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         echo "<h3 class='alert alert-success mb-4'>$result->num_rows results were found</h3>";
         ?>
     <table class="table table-hover">
-        <thead class="thead-dark"><tr><th>First Name</th><th>Last Name</th><th>Email</th><th>Phone</th><th>Degree Program</th><th>Financial Aid</th><th>Graduation Date</th></tr></thead>
+        <thead class="thead-dark"><tr><th>First Name</th><th>Last Name</th><th>Email</th><th>Phone</th><th>GPA</th><th>Degree Program</th><th>Financial Aid</th><th>Graduation Date</th></tr></thead>
             <?php 
          
             while ($row = $result->fetch_assoc()) {
                 echo "<tr>";
-                echo "<td>{$row["first_name"]}</td><td>{$row["last_name"]}</td><td>{$row["email"]}</td><td>{$row["phone"]}</td><td>{$row["degree_program"]}</td><td>{$row["financial_aid"]}</td><td>{$row["graduation_date"]}</td>";
+                echo "<td>{$row["first_name"]}</td><td>{$row["last_name"]}</td><td>{$row["email"]}</td><td>{$row["phone"]}</td><td>{$row["gpa"]}</td><td>{$row["degree_program"]}</td><td>{$row["financial_aid"]}</td><td>{$row["graduation_date"]}</td>";
                 echo "</tr>";
             }    
             ?>
