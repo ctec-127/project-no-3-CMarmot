@@ -60,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // build SQL
     // be sure to handle if no population is included
 
-    if (!empty($_POST["last_name"])) {
+    if (!empty($_POST['last_name'])) {
         $last_name = $_POST['last_name'];
         $lastSQL = " AND last_name = " .$last_name;
         echo $last_name;
@@ -76,17 +76,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     $sql = 'SELECT * FROM student_v2 WHERE gpa=' . '"' . $_POST['gpa'] .'"' . $lastSQL .$firstSQL;
+    // $sql ='SELECT * FROM student_v2 WHERE gpa="4" AND last_name = "Rojas"';
      echo $sql;
+ 
     
     $result = $db->query($sql);
   
 
 
 
-// Code to display search results
-// if ($_SERVER['REQUEST_METHOD'] == 'POST')
-//     $sql = "SELECT * FROM student_v2 WHERE gpa=" . '"' . $_POST["gpa"] . '"';
-//     $result = $db->query($sql);
+// Display results and handle no results
  
 
     if ($result->num_rows > 0) {
