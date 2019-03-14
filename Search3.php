@@ -60,9 +60,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // build SQL
     // be sure to handle if no population is included
 
+    // STUFF BRUCE AND CORLENE MODIFIED
+    // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     if (!empty($_POST['last_name'])) {
         $last_name = $_POST['last_name'];
-        $lastSQL = " AND last_name = " .$last_name;
+        $lastSQL = " AND last_name = " . '"' . $last_name . '"';
         echo $last_name;
     } else {
         $lastSQL = '';
