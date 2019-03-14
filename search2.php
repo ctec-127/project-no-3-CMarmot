@@ -8,7 +8,9 @@
     <title>Advanced Search</title>
 </head>
 <body>
-<?php require_once 'inc/db/mysqli_connect.inc.php';?>
+<?php 
+require_once 'inc/layout/header.inc.php'; 
+require_once 'inc/db/mysqli_connect.inc.php';?>
 <?php
 $sql = 'SELECT DISTINCT gpa FROM student_v2';
 $result = $db->query($sql);

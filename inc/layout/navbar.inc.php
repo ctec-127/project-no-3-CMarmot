@@ -14,7 +14,7 @@
         <a class="nav-link" href="create-record.php">Create Record</a>
       </li>    
       <li class="nav-item <?= echoActiveClassIfRequestMatches("advanced-search1");?>"">
-        <a class="nav-link" href="advanced-search1.php">Advanced Search</a>
+        <a class="nav-link" href="search2.php">Advanced Search</a>
       </li>
 
       <li class="nav-item dropdown">
