@@ -43,12 +43,22 @@ if (isset($_POST['gpa'])) {
         </div>
 
         <div class="form-group">
+            <label for="first_name">Student ID</label>
+                <input type="text" id="student_id" name="student_id" class="form-control w-25" placeholder="Enter a Student ID" value="<?=(isset($_POST["student_id"]) ? $_POST["student_id"]:'') ?>">  
+        </div><div class="form-group">   
+
+        <div class="form-group">
             <label for="first_name">First Name</label>
                 <input type="text" id="first_name" name="first_name" class="form-control w-25" placeholder="Enter a First Name" value="<?=(isset($_POST["first_name"]) ? $_POST["first_name"]:'') ?>">  
         </div><div class="form-group">
 
             <label for="last_name">Last Name</label>
                 <input type="text" id="last_name" name="last_name" class="form-control w-25" placeholder="Enter a Last Name" value="<?=(isset($_POST["last_name"]) ? $_POST["last_name"]:'') ?>">       
+        </div>
+        
+        <div class="form-group">
+            <label for="email">Email</label>
+                <input type="text" id="email" name="email" class="form-control w-25" placeholder="Enter an Email" value="<?=(isset($_POST["email"]) ? $_POST["email"]:'') ?>">  
         </div>
 
         <div class="form-group">
@@ -75,7 +85,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // STUFF BRUCE AND CORLENE MODIFIED
     // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-    if (!empty($_POST['last_name'])) {
+    if (!empty($_POST['student_id'])) {
+        $student_id = $_POST['student_id'];
+        $sidSQL = " AND student_id = " . '"' . $student_id . '"';
+    } else {
+        $sidSQL = '';
+    }
+
+
+    }if (!empty($_POST['last_name'])) {
         $last_name = $_POST['last_name'];
         $lastSQL = " AND last_name = " . '"' . $last_name . '"';
     } else {
@@ -87,6 +105,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $firstSQL = " AND first_name = " . '"' . $first_name . '"';
     } else {
         $firstSQL = '';
+    }
+
+    if (!empty($_POST["email"])) {
+        $email = $_POST['email'];
+        $emailSQL = " AND email = " . '"' . $email . '"';
+    } else {
+        $emailSQL = '';
     }
 
     if (!empty($_POST["phone"])) {
@@ -102,14 +127,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     } else {
         $financial_aidSQL = '';
     }
+
     // trying to get gpa to work when empty
     if (!empty($_POST["gpa"])) {
         $gpa = $_POST['gpa'];
         $gpaSQL= $gpa;
-        $sql = 'SELECT * FROM student_v2 WHERE gpa=' . '"' . $_POST['gpa'] .'"' . $lastSQL .$firstSQL. $phoneSQL.$financial_aidSQL;
+        $sql = 'SELECT * FROM student_v2 WHERE gpa=' . '"' . $_POST['gpa'] .'"' . $lastSQL .$firstSQL. $phoneSQL.$financial_aidSQL.$sidSQL.$emailSQL;
     } else {
         $gpaSQL ='"0" OR "1" OR "2" OR "3" OR "4" OR "5"';
-        $sql = 'SELECT * FROM student_v2 WHERE gpa="0" OR gpa="1" OR gpa="2" OR gpa="3" OR gpa="4" OR gpa="5"'. $lastSQL .$firstSQL. $phoneSQL.$financial_aidSQL.$gpaSQL;
+        $sql = 'SELECT * FROM student_v2 WHERE (gpa="0" OR gpa="1" OR gpa="2" OR gpa="3" OR gpa="4" OR gpa="5" OR gpa="6" OR gpa="7")'. $lastSQL .$firstSQL. $phoneSQL.$financial_aidSQL.$sidSQL.$emailSQL;
     }
 
 
@@ -117,7 +143,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     //  $sql = 'SELECT * FROM student_v2 WHERE gpa=' . '"' . $_POST['gpa'] .'"' . $lastSQL .$firstSQL. $phoneSQL.$financial_aidSQL;
 
 //  $sql ='SELECT * FROM student_v2 WHERE gpa="4" AND last_name = "Rojas"';
-//  $sql ='SELECT * FROM student_v2 WHERE gpa="4" OR gpa = "3"';
+// $sql ='SELECT * FROM student_v2 WHERE (gpa="4" OR gpa = "6") AND last_name= "Ankrum"';
      echo $sql;
    
  
@@ -134,12 +160,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo "<h3 class='alert alert-success mb-4'>$result->num_rows results were found</h3>";
         ?>
     <table class="table table-hover">
-        <thead class="thead-dark"><tr><th>First Name</th><th>Last Name</th><th>Email</th><th>Phone</th><th>GPA</th><th>Degree Program</th><th>Financial Aid</th><th>Graduation Date</th></tr></thead>
+        <thead class="thead-dark"><tr><th>Student ID</th><th>First Name</th><th>Last Name</th><th>Email</th><th>Phone</th><th>GPA</th><th>Degree Program</th><th>Financial Aid</th><th>Graduation Date</th></tr></thead>
             <?php 
          
             while ($row = $result->fetch_assoc()) {
                 echo "<tr>";
-                echo "<td>{$row["first_name"]}</td><td>{$row["last_name"]}</td><td>{$row["email"]}</td><td>{$row["phone"]}</td><td>{$row["gpa"]}</td><td>{$row["degree_program"]}</td><td>{$row["financial_aid"]}</td><td>{$row["graduation_date"]}</td>";
+                echo "<td>{$row["student_id"]}</td><td>{$row["first_name"]}</td><td>{$row["last_name"]}</td><td>{$row["email"]}</td><td>{$row["phone"]}</td><td>{$row["gpa"]}</td><td>{$row["degree_program"]}</td><td>{$row["financial_aid"]}</td><td>{$row["graduation_date"]}</td>";
                 echo "</tr>";
             }    
             ?>
@@ -148,7 +174,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             } else {
                 echo "<h3 class=\"mt-5\">Rut-roh. No data was found for your query.</h3>";
             }
-        }
+        
 
             ?>
    </div> <!-- Closing column -->
