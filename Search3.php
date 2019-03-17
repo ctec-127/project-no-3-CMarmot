@@ -35,20 +35,33 @@ if (isset($_POST['gpa'])) {
        
                         
        
-     <!-- Creating the input fields for search -->
+  
+     <!-- Each search term gets a div -->
         <div class="form-group">
             <label for="last_name">GPA</label>
                 <input type="text" id="gpa" name="gpa" class="form-control w-25" placeholder="Enter a GPA" value="<?=(isset($_POST["gpa"]) ? $_POST["gpa"]:'') ?>">       
         </div>
 
         <div class="form-group">
+            <label for="first_name">First Name</label>
+                <input type="text" id="first_name" name="first_name" class="form-control w-25" placeholder="Enter a First Name" value="<?=(isset($_POST["first_name"]) ? $_POST["first_name"]:'') ?>">  
+        </div><div class="form-group">
+
             <label for="last_name">Last Name</label>
                 <input type="text" id="last_name" name="last_name" class="form-control w-25" placeholder="Enter a Last Name" value="<?=(isset($_POST["last_name"]) ? $_POST["last_name"]:'') ?>">       
         </div>
+
         <div class="form-group">
-            <label for="first_name">First Name</label>
-                <input type="text" id="first_name" name="first_name" class="form-control w-25" placeholder="Enter a First Name" value="<?=(isset($_POST["first_name"]) ? $_POST["first_name"]:'') ?>">  
+            <label for="phone">Phone</label>
+                <input type="text" id="phone" name="phone" class="form-control w-25" placeholder="Enter a Phone Number" value="<?=(isset($_POST["phone"]) ? $_POST["phone"]:'') ?>">  
         </div>
+
+        <div class="form-group">
+            <label for="phone">Financial Aid</label>
+                <input type="text" id="financial_aid" name="financial_aid" class="form-control w-25" placeholder="Financial Aid? (1 or 0)" value="<?=(isset($_POST["financial_aid"]) ? $_POST["financial_aid"]:'') ?>">  
+        </div>
+
+        <!-- end of terms so do the Search -->
         <div class="form-group">
             <input type="submit" value="Search" class="btn btn-primary">
         </div>
@@ -58,28 +71,55 @@ if (isset($_POST['gpa'])) {
 // Code to display search results
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // build SQL
-    // be sure to handle if no population is included
+    // be sure to handle if no gpa is included
 
     // STUFF BRUCE AND CORLENE MODIFIED
     // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     if (!empty($_POST['last_name'])) {
         $last_name = $_POST['last_name'];
         $lastSQL = " AND last_name = " . '"' . $last_name . '"';
-        echo $last_name;
     } else {
         $lastSQL = '';
     }
 
     if (!empty($_POST["first_name"])) {
         $first_name = $_POST['first_name'];
-        $firstSQL = " AND first_name = " .$first_name;
+        $firstSQL = " AND first_name = " . '"' . $first_name . '"';
     } else {
         $firstSQL = '';
     }
 
-    $sql = 'SELECT * FROM student_v2 WHERE gpa=' . '"' . $_POST['gpa'] .'"' . $lastSQL .$firstSQL;
-    // $sql ='SELECT * FROM student_v2 WHERE gpa="4" AND last_name = "Rojas"';
+    if (!empty($_POST["phone"])) {
+        $phone = $_POST['phone'];
+        $phoneSQL = " AND phone = " . '"' . $phone . '"';
+    } else {
+        $phoneSQL = '';
+    }
+
+    if (!empty($_POST["financial_aid"])) {
+        $financial_aid = $_POST['financial_aid'];
+        $financial_aidSQL = " AND financial_aid = " . '"' . $financial_aid . '"';
+    } else {
+        $financial_aidSQL = '';
+    }
+    // trying to get gpa to work when empty
+    if (!empty($_POST["gpa"])) {
+        $gpa = $_POST['gpa'];
+        $gpaSQL= $gpa;
+        $sql = 'SELECT * FROM student_v2 WHERE gpa=' . '"' . $_POST['gpa'] .'"' . $lastSQL .$firstSQL. $phoneSQL.$financial_aidSQL;
+    } else {
+        $gpaSQL ='"0" OR "1" OR "2" OR "3" OR "4" OR "5"';
+        $sql = 'SELECT * FROM student_v2 WHERE gpa="0" OR gpa="1" OR gpa="2" OR gpa="3" OR gpa="4" OR gpa="5"'. $lastSQL .$firstSQL. $phoneSQL.$financial_aidSQL.$gpaSQL;
+    }
+
+
+ 
+    //  $sql = 'SELECT * FROM student_v2 WHERE gpa=' . '"' . $_POST['gpa'] .'"' . $lastSQL .$firstSQL. $phoneSQL.$financial_aidSQL;
+
+//  $sql ='SELECT * FROM student_v2 WHERE gpa="4" AND last_name = "Rojas"';
+//  $sql ='SELECT * FROM student_v2 WHERE gpa="4" OR gpa = "3"';
      echo $sql;
+   
  
     
     $result = $db->query($sql);
