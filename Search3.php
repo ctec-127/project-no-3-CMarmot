@@ -75,11 +75,18 @@ if (isset($_POST['gpa'])) {
             <label for="phone">Financial Aid</label>
                 <input type="text" id="financial_aid" name="financial_aid" class="form-control w-25" placeholder="Financial Aid? (1 or 0)" value="<?=(isset($_POST["financial_aid"]) ? $_POST["financial_aid"]:'') ?>">  
         </div>
-
+<!-- 
         <div class="form-group">
             <label for="graduation_date">Graduation Date</label>
                 <input type="text" id="graduation_date" name="graduation_date" class="form-control w-25" placeholder="Graduation Date" value="<?=(isset($_POST["graduation_date"]) ? $_POST["graduation_date"]:'') ?>">  
-        </div>
+        </div> -->
+<!-- Graduation Date needs to be in date format -->
+        <div>
+            <label for="graduation_date">Graduation date:</label>
+            <br>
+            <input type="date" id="graduation_date" name="graduation_date"
+            value="<?=(isset($_POST["graduation_date"]) ? $_POST["graduation_date"]:'') ?>">  
+       </div>
 
         <!-- end of terms so do the Search -->
         <div class="form-group">
