@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <title>Search Attempt 3</title>
+    <title>Advanced Search</title>
 </head>
 <body>
 <?php 
@@ -28,7 +28,7 @@ if (isset($_POST['gpa'])) {
 <!-- displaying the form -->
 <div class="container bg-light p-3">
     <div class="col-12 mt-5">
-        <h1 class="display-4 font-weight-bold">Students by GPA</h1>
+        <h1 class="display-4 font-weight-bold">Advanced Search</h1>
         <p class="mb-5">CTEC 127 - Winter 2019</p>
 
         <form action="<?=htmlspecialchars($_SERVER['PHP_SELF'])?>" method="POST" class="mb-3">
@@ -37,11 +37,7 @@ if (isset($_POST['gpa'])) {
        
   
      <!-- Each search term gets a div -->
-        <div class="form-group">
-            <label for="last_name">GPA</label>
-                <input type="text" id="gpa" name="gpa" class="form-control w-25" placeholder="Enter a GPA" value="<?=(isset($_POST["gpa"]) ? $_POST["gpa"]:'') ?>">       
-        </div>
-
+  
         <div class="form-group">
             <label for="first_name">Student ID</label>
                 <input type="text" id="student_id" name="student_id" class="form-control w-25" placeholder="Enter a Student ID" value="<?=(isset($_POST["student_id"]) ? $_POST["student_id"]:'') ?>">  
@@ -69,6 +65,11 @@ if (isset($_POST['gpa'])) {
         <div class="form-group">
             <label for="degree_program">Degree Program</label>
                 <input type="text" id="degree_program" name="degree_program" class="form-control w-25" placeholder="Enter a Degree" value="<?=(isset($_POST["degree_program"]) ? $_POST["degree_program"]:'') ?>">  
+        </div>
+
+        <div class="form-group">
+            <label for="last_name">GPA</label>
+                <input type="text" id="gpa" name="gpa" class="form-control w-25" placeholder="Enter a GPA" value="<?=(isset($_POST["gpa"]) ? $_POST["gpa"]:'') ?>">       
         </div>
 
         <div class="form-group">
