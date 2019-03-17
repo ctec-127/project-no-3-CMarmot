@@ -67,8 +67,18 @@ if (isset($_POST['gpa'])) {
         </div>
 
         <div class="form-group">
+            <label for="degree_program">Degree Program</label>
+                <input type="text" id="degree_program" name="degree_program" class="form-control w-25" placeholder="Enter a Degree" value="<?=(isset($_POST["degree_program"]) ? $_POST["degree_program"]:'') ?>">  
+        </div>
+
+        <div class="form-group">
             <label for="phone">Financial Aid</label>
                 <input type="text" id="financial_aid" name="financial_aid" class="form-control w-25" placeholder="Financial Aid? (1 or 0)" value="<?=(isset($_POST["financial_aid"]) ? $_POST["financial_aid"]:'') ?>">  
+        </div>
+
+        <div class="form-group">
+            <label for="graduation_date">Graduation Date</label>
+                <input type="text" id="graduation_date" name="graduation_date" class="form-control w-25" placeholder="Graduation Date" value="<?=(isset($_POST["graduation_date"]) ? $_POST["graduation_date"]:'') ?>">  
         </div>
 
         <!-- end of terms so do the Search -->
@@ -121,6 +131,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $phoneSQL = '';
     }
 
+    if (!empty($_POST["degree_program"])) {
+        $degree_program = $_POST['degree_program'];
+        $degree_programSQL = " AND degree_program = " . '"' . $degree_program . '"';
+    } else {
+        $degree_programSQL = '';
+    }
+
     if (!empty($_POST["financial_aid"])) {
         $financial_aid = $_POST['financial_aid'];
         $financial_aidSQL = " AND financial_aid = " . '"' . $financial_aid . '"';
@@ -128,14 +145,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $financial_aidSQL = '';
     }
 
+    if (!empty($_POST["graduation_date"])) {
+        $graduation_date = $_POST['graduation_date'];
+        $graduation_dateSQL = " AND graduation_date = " . '"' . $graduation_date . '"';
+    } else {
+        $graduation_dateSQL = '';
+    }
+
     // trying to get gpa to work when empty
     if (!empty($_POST["gpa"])) {
         $gpa = $_POST['gpa'];
         $gpaSQL= $gpa;
-        $sql = 'SELECT * FROM student_v2 WHERE gpa=' . '"' . $_POST['gpa'] .'"' . $lastSQL .$firstSQL. $phoneSQL.$financial_aidSQL.$sidSQL.$emailSQL;
+        $sql = 'SELECT * FROM student_v2 WHERE gpa=' . '"' . $_POST['gpa'] .'"' . $lastSQL .$firstSQL. $phoneSQL.$financial_aidSQL.$sidSQL.$emailSQL.$degree_programSQL.$graduation_dateSQL;
     } else {
         $gpaSQL ='"0" OR "1" OR "2" OR "3" OR "4" OR "5"';
-        $sql = 'SELECT * FROM student_v2 WHERE (gpa="0" OR gpa="1" OR gpa="2" OR gpa="3" OR gpa="4" OR gpa="5" OR gpa="6" OR gpa="7")'. $lastSQL .$firstSQL. $phoneSQL.$financial_aidSQL.$sidSQL.$emailSQL;
+        $sql = 'SELECT * FROM student_v2 WHERE (gpa="0" OR gpa="1" OR gpa="2" OR gpa="3" OR gpa="4" OR gpa="5" OR gpa="6" OR gpa="7")'. $lastSQL .$firstSQL. $phoneSQL.$financial_aidSQL.$sidSQL.$emailSQL.$degree_programSQL.$graduation_dateSQL;
     }
 
 
