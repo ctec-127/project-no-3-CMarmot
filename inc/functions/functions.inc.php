@@ -1,7 +1,6 @@
 <?php // Filename: function.inc.php
 
 // only display data for advanced search after clicking button
-
 function submitClick() {
     return true;
  }

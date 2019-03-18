@@ -4,12 +4,15 @@
 <?php 
 $pageTitle="Advanced Search";
 require_once 'inc/layout/header.inc.php'; 
-require_once 'inc/db/mysqli_connect.inc.php';?>
+require_once 'inc/db/mysqli_connect.inc.php';
+require_once 'inc/functions/functions.inc.php';
+
+?>
 
 
 <?php
 
-// trying unset 
+// trying unset to clear form but doesn't seem to help
     unset($first);
     unset($last);
     unset($sid);
@@ -20,12 +23,13 @@ require_once 'inc/db/mysqli_connect.inc.php';?>
     unset($degree);
     unset($graduation);
 
-// searching by gpa
+// searching by gpa because that's where I started
 $sql = 'SELECT DISTINCT gpa FROM student_v2';
 $result = $db->query($sql);
 
 // for sticky select
 $gpa = '';
+
 // $sidSQL was squirrely so I'm setting it here 
 $sidSQL='';
 $selected = '';
@@ -98,7 +102,7 @@ if (isset($_POST['gpa'])) {
         <!-- end of terms so do the Search -->
         <div class="form-group">
    
-            <input type="submit" value="Search" class="btn btn-primary" onclick="submitClick()"/>
+            <input type="submit" value="Search" class="btn btn-primary" onclick="return submitClick()"/>
         </div>
     </form>
 
@@ -175,7 +179,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $gpaSQL= $gpa;
         $sql = 'SELECT * FROM student_v2 WHERE gpa=' . '"' . $_POST['gpa'] .'"' . $lastSQL .$firstSQL. $phoneSQL.$financial_aidSQL.$sidSQL.$emailSQL.$degree_programSQL.$graduation_dateSQL;
     } else {
-        $gpaSQL ='"0" OR "1" OR "2" OR "3" OR "4" OR "5"';
+        
         $sql = 'SELECT * FROM student_v2 WHERE (gpa="0" OR gpa="1" OR gpa="2" OR gpa="3" OR gpa="4" OR gpa="5" OR gpa="6" OR gpa="7")'. $lastSQL .$firstSQL. $phoneSQL.$financial_aidSQL.$sidSQL.$emailSQL.$degree_programSQL.$graduation_dateSQL;
     }
 
