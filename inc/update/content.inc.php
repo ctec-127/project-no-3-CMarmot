@@ -39,16 +39,18 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
     } else {
         $email = $db->real_escape_string(strip_tags($_POST['email']));
     }
+
     if (empty($_POST['phone'])) {
         array_push($error_bucket,"<p>A phone number is required.</p>");
     } else {
         $phone = $db->real_escape_string(strip_tags($_POST['phone']));
     }
+
     // trying to add gpa
     if (empty($_POST['gpa'])) {
         array_push($error_bucket,"<p>A GPA is required.</p>");
     } else {
-        #$phone = $_POST['gpa'];
+      
         $gpa = $db->real_escape_string($_POST['gpa']);
     }
     if (!isset($_POST['fin'])) {
@@ -64,12 +66,14 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
         }
         $fin = $db->real_escape_string($_POST['fin']);
     }
+
     if (empty($_POST['degree'])) {
         array_push($error_bucket,"<p>A degree choice is required.</p>");
     } else {
         #$degree = $_POST['degree'];
         $degree = $db->real_escape_string($_POST['degree']);
     }
+
     if (empty($_POST['graduation'])) {
         array_push($error_bucket,"<p>A graduation date is required.</p>");
     } else {
@@ -120,5 +124,10 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
         $sid = $row['student_id'];
         $email = $row['email'];
         $phone = $row['phone'];
+        // adding the new columns
+        $gpa = $row['gpa'];
+        $fin = $row['financial_aid'];
+        $degree = $row['degree_program'];
+        $graduation = $row['graduation_date'];
     }
 }

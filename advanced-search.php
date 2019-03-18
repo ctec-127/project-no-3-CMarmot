@@ -1,24 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <title>Advanced Search</title>
-</head>
-<body>
+<?php // Filename: advcanced-search.php ?>
+
+
 <?php 
+$pageTitle="Advanced Search";
 require_once 'inc/layout/header.inc.php'; 
 require_once 'inc/db/mysqli_connect.inc.php';?>
 <?php
+
+// trying unset 
+    unset($first);
+    unset($last);
+    unset($sid);
+    unset($email);
+    unset($phone);
+    unset($gpa);
+    unset($fin);
+    unset($degree);
+    unset($graduation);
+
 // searching by gpa
 $sql = 'SELECT DISTINCT gpa FROM student_v2';
 $result = $db->query($sql);
 
 // for sticky select
 $gpa = '';
-
+// $sidSQL was squirrely so I'm setting it here 
+$sidSQL='';
 $selected = '';
 
 if (isset($_POST['gpa'])) {
@@ -41,13 +48,13 @@ if (isset($_POST['gpa'])) {
         <div class="form-group">
             <label for="first_name">Student ID</label>
                 <input type="text" id="student_id" name="student_id" class="form-control w-25" placeholder="Enter a Student ID" value="<?=(isset($_POST["student_id"]) ? $_POST["student_id"]:'') ?>">  
-        </div><div class="form-group">   
+        </div>
 
         <div class="form-group">
             <label for="first_name">First Name</label>
                 <input type="text" id="first_name" name="first_name" class="form-control w-25" placeholder="Enter a First Name" value="<?=(isset($_POST["first_name"]) ? $_POST["first_name"]:'') ?>">  
-        </div><div class="form-group">
-
+        </div>
+        <div class="form-group">
             <label for="last_name">Last Name</label>
                 <input type="text" id="last_name" name="last_name" class="form-control w-25" placeholder="Enter a Last Name" value="<?=(isset($_POST["last_name"]) ? $_POST["last_name"]:'') ?>">       
         </div>
@@ -64,7 +71,7 @@ if (isset($_POST['gpa'])) {
 
         <div class="form-group">
             <label for="degree_program">Degree Program</label>
-                <input type="text" id="degree_program" name="degree_program" class="form-control w-25" placeholder="Enter a Degree" value="<?=(isset($_POST["degree_program"]) ? $_POST["degree_program"]:'') ?>">  
+                <input type="text" id="degree_program" name="degree_program" class="form-control w-25" placeholder="Enter a Degree" value="<?=(isset($_POST["degree_program"]) ? $_POST["degree_program"]:'') ?>"> 
         </div>
 
         <div class="form-group">
@@ -76,24 +83,22 @@ if (isset($_POST['gpa'])) {
             <label for="phone">Financial Aid</label>
                 <input type="text" id="financial_aid" name="financial_aid" class="form-control w-25" placeholder="Financial Aid? (1 or 0)" value="<?=(isset($_POST["financial_aid"]) ? $_POST["financial_aid"]:'') ?>">  
         </div>
-<!-- 
-        <div class="form-group">
-            <label for="graduation_date">Graduation Date</label>
-                <input type="text" id="graduation_date" name="graduation_date" class="form-control w-25" placeholder="Graduation Date" value="<?=(isset($_POST["graduation_date"]) ? $_POST["graduation_date"]:'') ?>">  
-        </div> -->
+
 <!-- Graduation Date needs to be in date format -->
         <div>
             <label for="graduation_date">Graduation date:</label>
             <br>
             <input type="date" id="graduation_date" name="graduation_date"
             value="<?=(isset($_POST["graduation_date"]) ? $_POST["graduation_date"]:'') ?>">  
+            <br><br>
        </div>
 
         <!-- end of terms so do the Search -->
         <div class="form-group">
             <input type="submit" value="Search" class="btn btn-primary">
         </div>
-        </form>
+
+    </form>
 
 <?php 
 // Code to display search results
@@ -214,5 +219,3 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </div> <!-- Closing container -->
 <?php require_once 'inc/layout/footer.inc.php';?>
 
-</body>
-</html> 
