@@ -42,8 +42,9 @@ http://php.net/manual/en/language.operators.comparison.php#language.operators.co
     <!--  degree  --> 
     
     <label class="col-form-label" for="degree">Degree </label>
-    <select class="form-control" name ="degree" id="degree">
+    <select class="form-control" name ="degree" id="degree" >
         <!-- <option value="--Select--">--Select--</option> -->
+        <option value="" disabled selected>Select a Degree</option>
         <option value ="Communications">Communications</option>
         <option value ="Ceramics">Ceramics</option>
     </select>  

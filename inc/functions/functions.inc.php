@@ -26,7 +26,7 @@ function display_letter_filters($filter){
     echo '<a class="text-secondary p-2 mr-2 bg-success text-light border rounded" href="?clearfilter" title="Reset Filter">Reset</a>&nbsp;&nbsp;';
 }
 
-
+// This displays the table
 function display_record_table($result){
     echo '<div class="table-responsive">';
     echo "<table class=\"table table-striped table-hover table-sm mt-3 table-bordered\">";
@@ -42,6 +42,7 @@ function display_record_table($result){
     <th><a href="?sortby=degree_program">Degree</a></th>
     <th><a href="?sortby=graduation_date">Graduation Date</a></th>
     </tr></thead>';
+
     # $row will be an associative array containing one row of data at a time
     while ($row = $result->fetch_assoc()){
         # display rows and columns of data

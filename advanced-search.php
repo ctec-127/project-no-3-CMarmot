@@ -210,7 +210,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             ?>
    </div> <!-- Closing column -->
+   
 </div> <!-- Closing container -->
+<?php require_once 'inc/layout/footer.inc.php';?>
 
 </body>
 </html> 

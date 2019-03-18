@@ -68,6 +68,7 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
         #$degree = $_POST['degree'];
         $degree = $db->real_escape_string($_POST['degree']);
     }
+    
     // adding graduation date
     if (empty($_POST['graduation'])) {
         array_push($error_bucket,"<p>A graduation date is required.</p>");

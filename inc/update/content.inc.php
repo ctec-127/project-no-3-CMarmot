@@ -89,7 +89,7 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
             $db->error . '.</div>';
         } else {
             echo '<div class="alert alert-success" role="alert">
-            I saved that new record for you!
+            I updated that record for you!
           </div>';
             unset($first);
             unset($last);
