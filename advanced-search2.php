@@ -44,11 +44,9 @@ if (isset($_POST['gpa'])) {
         <h1 class="display-4 font-weight-bold">Advanced Search</h1>
         <p class="mb-5">CTEC 127 - Winter 2019</p>
 
-        <form action="<?=htmlspecialchars($_SERVER['PHP_SELF'])?>" method="POST" onsubmit class="mb-3">
+        <form action="<?=htmlspecialchars($_SERVER['PHP_SELF'])?>" method="POST" onsubmit class="mb-3" id="myForm">
        
-
-    
-  
+     
      <!-- Each search term gets a div -->
   
         <div class="form-group">
@@ -101,8 +99,14 @@ if (isset($_POST['gpa'])) {
  
         <!-- end of terms so do the Search -->
         <div class="form-group">
-   
-            <input type="submit" value="Search" class="btn btn-primary" onclick="return submitClick()"/>
+   <!-- trying to get form to only return results AFTER the button is clicked -->
+            <input type="button" value="Search" name="submit" class="btn btn-primary" onclick="myFunction()"/>
+            <script>
+        function myFunction() {
+        document.getElementById("myForm").submit();
+}
+</script>
+
         </div>
     </form>
 
@@ -112,7 +116,7 @@ if (isset($_POST['gpa'])) {
 // Code to display search results
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // build SQL
-    // be sure to handle if no gpa is included
+
 
     // STUFF BRUCE AND CORLENE MODIFIED
     // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -187,8 +191,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 //  $sql = 'SELECT * FROM student_v2 WHERE gpa=' . '"' . $_POST['gpa'] .'"' . $lastSQL .$firstSQL. $phoneSQL.$financial_aidSQL;
 
 //  $sql ='SELECT * FROM student_v2 WHERE gpa="4" AND last_name = "Rojas"';
-// $sql ='SELECT * FROM student_v2 WHERE (gpa="4" OR gpa = "6") AND last_name= "Ankrum"';
-     echo $sql;
+//  $sql ='SELECT * FROM student_v2 WHERE (gpa="4" OR gpa = "6") AND last_name= "Ankrum"';
+
+    // echo the info to see if it is getting the right stuff
+    echo $sql;
    
  
     
