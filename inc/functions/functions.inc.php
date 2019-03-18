@@ -1,5 +1,13 @@
 <?php // Filename: function.inc.php
 
+// only display data for advanced search after clicking button
+
+function submitClick() {
+    return true;
+ }
+
+
+//  function to display any messages
 function display_message(){
     if (isset($_GET['message'])) {
         $message = $_GET['message'];
@@ -9,7 +17,7 @@ function display_message(){
     }
 }
 
-
+// function to display the letters for the last name search
 function display_letter_filters($filter){  
     echo '<span class="d-inline-block mr-3">Filter by <strong>Last Name</strong></span>';
  

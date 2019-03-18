@@ -5,6 +5,8 @@
 $pageTitle="Advanced Search";
 require_once 'inc/layout/header.inc.php'; 
 require_once 'inc/db/mysqli_connect.inc.php';?>
+
+
 <?php
 
 // trying unset 
@@ -38,10 +40,10 @@ if (isset($_POST['gpa'])) {
         <h1 class="display-4 font-weight-bold">Advanced Search</h1>
         <p class="mb-5">CTEC 127 - Winter 2019</p>
 
-        <form action="<?=htmlspecialchars($_SERVER['PHP_SELF'])?>" method="POST" class="mb-3">
+        <form action="<?=htmlspecialchars($_SERVER['PHP_SELF'])?>" method="POST" onsubmit class="mb-3">
        
-                        
-       
+
+    
   
      <!-- Each search term gets a div -->
   
@@ -92,13 +94,15 @@ if (isset($_POST['gpa'])) {
             value="<?=(isset($_POST["graduation_date"]) ? $_POST["graduation_date"]:'') ?>">  
             <br><br>
        </div>
-
+ 
         <!-- end of terms so do the Search -->
         <div class="form-group">
-            <input type="submit" value="Search" class="btn btn-primary">
+   
+            <input type="submit" value="Search" class="btn btn-primary" onclick="submitClick()"/>
         </div>
-
     </form>
+
+
 
 <?php 
 // Code to display search results
@@ -175,9 +179,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $sql = 'SELECT * FROM student_v2 WHERE (gpa="0" OR gpa="1" OR gpa="2" OR gpa="3" OR gpa="4" OR gpa="5" OR gpa="6" OR gpa="7")'. $lastSQL .$firstSQL. $phoneSQL.$financial_aidSQL.$sidSQL.$emailSQL.$degree_programSQL.$graduation_dateSQL;
     }
 
-
- 
-    //  $sql = 'SELECT * FROM student_v2 WHERE gpa=' . '"' . $_POST['gpa'] .'"' . $lastSQL .$firstSQL. $phoneSQL.$financial_aidSQL;
+// various tests commented out
+//  $sql = 'SELECT * FROM student_v2 WHERE gpa=' . '"' . $_POST['gpa'] .'"' . $lastSQL .$firstSQL. $phoneSQL.$financial_aidSQL;
 
 //  $sql ='SELECT * FROM student_v2 WHERE gpa="4" AND last_name = "Rojas"';
 // $sql ='SELECT * FROM student_v2 WHERE (gpa="4" OR gpa = "6") AND last_name= "Ankrum"';
