@@ -139,12 +139,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     echo "<tr>";
                     echo "<td>{$row["student_id"]}</td><td>{$row["first_name"]}</td><td>{$row["last_name"]}</td><td>{$row["email"]}</td><td>{$row["phone"]}</td><td>{$row["gpa"]}</td><td>{$row["degree_program"]}</td><td>{$row["financial_aid"]}</td><td>{$row["graduation_date"]}</td>";
                     echo "</tr>";
+                    
             }    
             ?>
     </table>
             <?php
             } else {
                 echo "<h3 class=\"mt-5\">Rut-roh. No data was found for your query.</h3>";
+             
             }
         } 
             ?>

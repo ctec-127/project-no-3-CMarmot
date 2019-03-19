@@ -71,6 +71,8 @@
 
     </form>
     <!-- give an option to clear the form -->
-    <form id='php_clear_form' action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" accept-charset="utf-8"> <!-- When this posts it reloads the page -->
+
+
+    <form id='php_clear_form' action="<?php echo $_SERVER['PHP_SELF']; ?>"  $_POST=array();accept-charset="utf-8"> <!-- When this posts it reloads the page -->
     <input type="submit" name="clear" class="btn btn-primary" value="Reset Form"></a>
-      
+ 
