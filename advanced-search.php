@@ -129,10 +129,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // why does the result happen without submit????
     $result = $db->query($sql);
 
-
-
-
-
     if ($result->num_rows > 0) {
         echo "<h3 class='alert alert-success mb-4'>$result->num_rows results were found</h3>";
         ?>
@@ -150,7 +146,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             } else {
                 echo "<h3 class=\"mt-5\">Rut-roh. No data was found for your query.</h3>";
             }
-}
+        } 
             ?>
    </div> <!-- Closing column -->
    
